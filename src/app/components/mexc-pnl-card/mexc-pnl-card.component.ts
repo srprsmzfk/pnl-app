@@ -2,96 +2,91 @@ import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } fr
 import { FormControl, FormGroup } from '@angular/forms';
 import { BackgroundEnum } from '../../enums/background.enum';
 import { filter, map, Subject, takeUntil, tap } from 'rxjs';
-import { Card9KeyEnum } from '../../enums/card9-key.enum';
+import { Card10KeyEnum } from '../../enums/card10-key.enum';
 import { SellEnum } from '../../enums/sell.enum';
 import { MEXC_CLIENTS } from '../../constants/mexc-clients.const';
 import { CardLanguage } from '../../enums/card-language.enum';
-import { CARD9_CONFIG_EN } from '../../constants/card9en.config';
-import { CARD9_CONFIG_RU } from '../../constants/card9ru.config';
+import { CARD10_CONFIG_EN } from '../../constants/card10en.config';
+import { CARD10_CONFIG_RU } from '../../constants/card10ru.config';
 import { MexcReferralCanvasService } from '../../services/mexc-referral.canvas.service';
 
 const ruBgs = [
   {
     label: '0',
-    value: BackgroundEnum.MexCard2Ru1,
+    value: BackgroundEnum.MexCard3Ru1,
   },
   {
     label: '1',
-    value: BackgroundEnum.MexCard2Ru2,
+    value: BackgroundEnum.MexCard3Ru2,
   },
   {
     label: '2',
-    value: BackgroundEnum.MexCard2Ru3,
+    value: BackgroundEnum.MexCard3Ru3,
   },
   {
     label: '3',
-    value: BackgroundEnum.MexCard2Ru4,
+    value: BackgroundEnum.MexCard3Ru4,
   },
   {
     label: '4',
-    value: BackgroundEnum.MexCard2Ru5,
+    value: BackgroundEnum.MexCard3Ru5,
   },
   {
     label: '5',
-    value: BackgroundEnum.MexCard2Ru6,
+    value: BackgroundEnum.MexCard3Ru6,
   },
 ];
 
 const enBgs = [
   {
     label: '0',
-    value: BackgroundEnum.MexCard2En1,
+    value: BackgroundEnum.MexCard3En1,
   },
   {
     label: '1',
-    value: BackgroundEnum.MexCard2En2,
+    value: BackgroundEnum.MexCard3En2,
   },
   {
     label: '2',
-    value: BackgroundEnum.MexCard2En3,
+    value: BackgroundEnum.MexCard3En3,
   },
   {
     label: '3',
-    value: BackgroundEnum.MexCard2En4,
+    value: BackgroundEnum.MexCard3En4,
   },
   {
     label: '4',
-    value: BackgroundEnum.MexCard2En5,
+    value: BackgroundEnum.MexCard3En5,
   },
   {
     label: '5',
-    value: BackgroundEnum.MexCard2En6,
+    value: BackgroundEnum.MexCard3En6,
   },
 ];
 
 
 @Component({
   selector: 'app-mexc-referral-card',
-  templateUrl: './mexc-referral-card.component.html',
-  styleUrls: ['./mexc-referral-card.component.scss']
+  templateUrl: './mexc-pnl-card.component.html',
+  styleUrls: ['./mexc-pnl-card.component.scss']
 })
-export class MexcReferralCardComponent implements OnInit, AfterViewInit, OnDestroy{
+export class MexcPnlCardComponent implements OnInit, AfterViewInit, OnDestroy{
   @ViewChild('mirror') imgRef: ElementRef;
   canvas: HTMLCanvasElement;
   form = new FormGroup({
-    [Card9KeyEnum.Background]: new FormControl(),
-    [Card9KeyEnum.Sell]: new FormControl(SellEnum.ShortEn),
-    [Card9KeyEnum.Factor]: new FormControl(''),
-    [Card9KeyEnum.Coin]: new FormControl(''),
-    [Card9KeyEnum.Referral]: new FormControl(''),
-    [Card9KeyEnum.Pnl]: new FormControl(''),
-    [Card9KeyEnum.Pnl2]: new FormControl(''),
-    [Card9KeyEnum.FairPrice]: new FormControl(''),
-    [Card9KeyEnum.EntryPrice]: new FormControl(''),
-    [Card9KeyEnum.Time]: new FormControl(''),
-    [Card9KeyEnum.Lang]: new FormControl(CardLanguage.En),
+    [Card10KeyEnum.Background]: new FormControl(),
+    [Card10KeyEnum.Referral]: new FormControl(''),
+    [Card10KeyEnum.Pnl]: new FormControl(''),
+    [Card10KeyEnum.Pnl2]: new FormControl(''),
+    [Card10KeyEnum.Time]: new FormControl(''),
+    [Card10KeyEnum.Lang]: new FormControl(CardLanguage.En),
   })
 
-  imgSrc: any = BackgroundEnum.MexCard2En1;
-  key = Card9KeyEnum;
+  imgSrc: any = BackgroundEnum.MexCard3En1;
+  key = Card10KeyEnum;
   referals = MEXC_CLIENTS;
   sell = SellEnum;
-  config = CARD9_CONFIG_EN;
+  config = CARD10_CONFIG_EN;
   backgrounds = enBgs;
   cardLanguage = CardLanguage;
 
@@ -124,9 +119,9 @@ export class MexcReferralCardComponent implements OnInit, AfterViewInit, OnDestr
       .pipe(
         takeUntil(this.destroy$),
         tap(form => {
-          this.lang = form[Card9KeyEnum.Lang];
+          this.lang = form[Card10KeyEnum.Lang];
           this.backgrounds = this.lang === CardLanguage.En ? enBgs : ruBgs;
-          this.config = this.lang === CardLanguage.En ? CARD9_CONFIG_EN : CARD9_CONFIG_RU;
+          this.config = this.lang === CardLanguage.En ? CARD10_CONFIG_EN : CARD10_CONFIG_RU;
           this.canvasBackgroundImg.src = this.backgrounds[+form[this.key.Background]].value;
         })
       )
@@ -172,30 +167,15 @@ export class MexcReferralCardComponent implements OnInit, AfterViewInit, OnDestr
 
   private drawForm(): void {
     let form = this.form.value;
-    this.canvasService.drawText(`${form[this.key.Coin].toUpperCase()} USDT ${this.lang === CardLanguage.En ? 'Perpetual' : 'Бессрочный'}`, this.config[this.key.Coin]);
-    this.canvasService.drawSellLine(this.getSellValue(), form[this.key.Factor], this.config);
+    this.canvasService
+      .drawText(`${this.lang === CardLanguage.En ? 'Cumulative PNL Ratio (%)' : 'Совокупный PNL (%)'}`, this.config[this.key.Title]);
     this.canvasService
       .drawNumber(`${form[this.key.Pnl]}%`, this.config[this.key.Pnl]);
     this.canvasService
-      .drawNumber(`${form[this.key.Pnl2]}`, this.config[this.key.Pnl2]);
-    this.canvasService.drawText(form[this.key.FairPrice], this.config[this.key.FairPrice]);
-    this.canvasService.drawText(form[this.key.EntryPrice], this.config[this.key.EntryPrice]);
-    this.canvasService.drawText(form[this.key.Time], this.config[this.key.Time]);
+      .drawNumber(`${form[this.key.Pnl2]} USDT`, this.config[this.key.Pnl2]);
+    this.canvasService
+      .drawText(`${this.lang === CardLanguage.En ? 'Date' : 'Время'}    ${form[this.key.Time]}`, this.config[this.key.Time]);
     this.canvasService.drawText(form[this.key.Referral], this.config[this.key.Referral]);
     this.qr$.next(form[this.key.Referral]);
-  }
-
-  private getSellValue(): SellEnum {
-    console.log(this.lang, this.form[this.key.Sell]);
-    return {
-      [CardLanguage.En]: {
-        [SellEnum.LongEn]: SellEnum.LongEn,
-        [SellEnum.ShortEn]: SellEnum.ShortEn
-      },
-      [CardLanguage.Ru]: {
-        [SellEnum.LongEn]: SellEnum.Long,
-        [SellEnum.ShortEn]: SellEnum.Short,
-      }
-    }[this.lang][this.form.value[this.key.Sell]];
   }
 }
