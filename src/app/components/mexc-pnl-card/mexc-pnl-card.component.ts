@@ -171,8 +171,11 @@ export class MexcPnlCardComponent implements OnInit, AfterViewInit, OnDestroy{
       .drawText(`${this.lang === CardLanguage.En ? 'Cumulative PNL Ratio (%)' : 'Совокупный PNL (%)'}`, this.config[this.key.Title]);
     this.canvasService
       .drawNumber(`${form[this.key.Pnl]}%`, this.config[this.key.Pnl]);
-    this.canvasService
-      .drawNumber(`${form[this.key.Pnl2]} USDT`, this.config[this.key.Pnl2]);
+    if (form[this.key.Pnl2]) {
+      this.canvasService
+        .drawNumber(`${form[this.key.Pnl2]} USDT`, this.config[this.key.Pnl2]);
+    }
+
     this.canvasService
       .drawText(`${this.lang === CardLanguage.En ? 'Date' : 'Время'}    ${form[this.key.Time]}`, this.config[this.key.Time]);
     this.canvasService.drawText(form[this.key.Referral], this.config[this.key.Referral]);

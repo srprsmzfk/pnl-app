@@ -31,7 +31,7 @@ export const CARD10_CONFIG_EN: Record<string, TextInterface> = {
   [Card10KeyEnum.Time]: {
     x: 70,
     y: 1006,
-    font: FontEnum.Plex,
+    font: FontEnum.Frygia,
     color: ColorEnum.White,
     size: '45px',
     weight: 100

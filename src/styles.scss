@@ -29,6 +29,11 @@ $my-app-theme: mat.define-light-theme(
   src: url('assets/fonts/BinanceRegular.woff2') format('woff2');
 }
 
+@font-face {
+  font-family: 'Frygia' ;
+  src: url('assets/fonts/Frygia.woff2') format('woff2');
+}
+
 html,
 body {
   height: 100%;
