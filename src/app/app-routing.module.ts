@@ -12,6 +12,7 @@ import { OpenTradesTpslComponent } from './components/open-trades-tpsl/open-trad
 import { MexcOpenTradesComponent } from './components/mexc-open-trades/mexc-open-trades.component';
 import { MexcReferralCardComponent } from './components/mexc-referral-card/mexc-referral-card.component';
 import { MexcPnlCardComponent } from './components/mexc-pnl-card/mexc-pnl-card.component';
+import {FuturesAnalysisComponent} from "./components/futures-analysis/futures-analysis.component";
 
 const routes: Routes = [
   {
@@ -61,6 +62,10 @@ const routes: Routes = [
   {
     path: 'card11',
     component: MexcPnlCardComponent
+  },
+  {
+    path: 'card12',
+    component: FuturesAnalysisComponent
   }
 ];
 

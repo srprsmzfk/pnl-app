@@ -1,0 +1,145 @@
+<div class="container">
+  <img src="assets/img/futures-analysis-bg.png">
+  <div #main class="main">
+      <div class="total">
+        <div class="row" (click)="onClick('amount')">
+          <div
+            [style.font-size]="(main.offsetHeight/100*2.6)+'px'"
+            class="amount">
+            {{data.amount}}
+          </div>
+          <div class="label">USDT</div>
+        </div>
+        <div class="aprox">{{'≈ $'+data.amount}}</div>
+      </div>
+      <div class="pnl">
+        <div class="block">
+          <div class="row" (click)="onClick('todayPnl')">
+            <div class="amount">{{data.todayPnl}}</div>
+            <div class="label">USDT</div>
+          </div>
+          <div
+            (click)="onClick('todayPercent')"
+            [style.color]="data.todayPercent.includes('-')?'#f6465d':'#0ecb81'"
+            class="percent">
+            {{data.todayPercent}}%
+          </div>
+        </div>
+        <div class="block">
+          <div class="row" (click)="onClick('weekPnl')">
+            <div class="amount">{{data.weekPnl}}</div>
+            <div class="label">USDT</div>
+          </div>
+          <div
+            (click)="onClick('weekPercent')"
+            [style.color]="data.weekPercent.includes('-')?'#f6465d':'#0ecb81'"
+            class="percent">
+            {{data.weekPercent}}%
+          </div>
+        </div>
+      </div>
+    <div class="toggle" (click)="toggle($event)"></div>
+    <div class="summary">
+      <div class="amount">{{data.weekPnl}} USDT</div>
+      <div
+        [style.color]="data.weekPercent.includes('-')?'#f6465d':'#0ecb81'"
+        class="percent">
+        ({{data.weekPercent}}%)
+      </div>
+    </div>
+  </div>
+  <div *ngIf="isOpened" class="expand-view" (click)="toggle($event)">
+    <img src="assets/img/expand-futures-view.png" (click)="$event.stopPropagation()">
+    <div [style.margin-bottom]="'80%'" class="block-row" (click)="$event.stopPropagation()">
+      <div class="block">
+        <div (click)="onClick('todayPnl')" class="amount">{{data.todayPnl}} USDT</div>
+        <div
+          (click)="onClick('todayPercent', $event)"
+          [style.color]="data.todayPercent.includes('-')?'#f6465d':'#0ecb81'"
+          class="percent">
+          {{data.todayPercent}}%
+        </div>
+      </div>
+      <div class="block">
+        <div class="amount">{{data.weekPnl}} USDT</div>
+        <div
+          (click)="onClick('weekPercent', $event)"
+          [style.color]="data.weekPercent.includes('-')?'#f6465d':'#0ecb81'"
+          class="percent">
+          {{data.weekPercent}}%
+        </div>
+      </div>
+    </div>
+    <div [style.margin-bottom]="'62%'" class="block-row" (click)="$event.stopPropagation()">
+      <div class="block">
+        <div (click)="onClick('pnl30')" class="amount">{{data.pnl30}} USDT</div>
+        <div
+          (click)="onClick('percent30')"
+          [style.color]="data.percent30.includes('-')?'#f6465d':'#0ecb81'"
+          class="percent">
+          {{data.percent30}}%
+        </div>
+      </div>
+      <div class="block">
+        <div (click)="onClick('pnl60')" class="amount">{{data.pnl60}} USDT</div>
+        <div
+          (click)="onClick('percent60')"
+          [style.color]="data.percent60.includes('-')?'#f6465d':'#0ecb81'"
+          class="percent">
+          {{data.percent60}}%
+        </div>
+      </div>
+    </div>
+    <div [style.margin-bottom]="'44%'" class="block-row" (click)="$event.stopPropagation()">
+      <div class="block">
+        <div (click)="onClick('pnl90')" class="amount">{{data.pnl90}} USDT</div>
+        <div
+          (click)="onClick('percent90')"
+          [style.color]="data.percent90.includes('-')?'#f6465d':'#0ecb81'"
+          class="percent">
+          {{data.percent90}}%
+        </div>
+      </div>
+      <div class="block">
+        <div (click)="onClick('pnl120')" class="amount">{{data.pnl120}} USDT</div>
+        <div
+          (click)="onClick('percent120')"
+          [style.color]="data.percent120.includes('-')?'#f6465d':'#0ecb81'"
+          class="percent">
+          {{data.percent120}}%
+        </div>
+      </div>
+    </div>
+    <div [style.margin-bottom]="'26%'" class="block-row" (click)="$event.stopPropagation()">
+      <div class="block">
+        <div (click)="onClick('pnl150')" class="amount">{{data.pnl150}} USDT</div>
+        <div
+          (click)="onClick('percent150')"
+          [style.color]="data.percent150.includes('-')?'#f6465d':'#0ecb81'"
+          class="percent">
+          {{data.percent150}}%
+        </div>
+      </div>
+      <div class="block">
+        <div (click)="onClick('pnl180')" class="amount">{{data.pnl180}} USDT</div>
+        <div
+          (click)="onClick('percent180')"
+          [style.color]="data.percent180.includes('-')?'#f6465d':'#0ecb81'"
+          class="percent">
+          {{data.percent180}}%
+        </div>
+      </div>
+    </div>
+    <div [style.margin-bottom]="'7%'" class="block-row" (click)="$event.stopPropagation()">
+      <div class="block">
+        <div (click)="onClick('pnl360')" class="amount">{{data.pnl360}} USDT</div>
+        <div
+          (click)="onClick('percent360')"
+          [style.color]="data.percent360.includes('-')?'#f6465d':'#0ecb81'"
+          class="percent">
+          {{data.percent360}}%
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
