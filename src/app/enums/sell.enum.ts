@@ -1,6 +1,6 @@
 export enum SellEnum {
-  Short = 'Продать',
+  Short = 'Шорт',
   ShortEn = 'Short',
-  Long = 'Купить',
+  Long = 'Лонг',
   LongEn = 'Long',
 }
