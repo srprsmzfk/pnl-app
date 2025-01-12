@@ -10,5 +10,8 @@ export enum Card9KeyEnum {
   EntryPrice = 'entry-price',
   Time = 'time',
   Referral = 'referral',
-  Qr = 'qr'
+  Qr = 'qr',
+  FairPriceTitle = 'fair-pricet',
+  EntryPriceTitle = 'entry-pricet',
+  TimeTitle = 'timet',
 }

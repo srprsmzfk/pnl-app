@@ -79,5 +79,29 @@ export const CARD9_CONFIG_RU: Record<string, TextInterface> = {
   [Card9KeyEnum.Qr]: {
     x: 46,
     y: 1079,
-  }
+  },
+  [Card9KeyEnum.FairPriceTitle]: {
+    x: 70,
+    y: 833,
+    font: FontEnum.Plex,
+    color: '#d4d7dd',
+    size: '42px',
+    weight: 200
+  },
+  [Card9KeyEnum.EntryPriceTitle]: {
+    x: 70,
+    y: 895,
+    font: FontEnum.Plex,
+    color: '#d4d7dd',
+    size: '42px',
+    weight: 200
+  },
+  [Card9KeyEnum.TimeTitle]: {
+    x: 70,
+    y: 961,
+    font: FontEnum.Plex,
+    color: '#d4d7dd',
+    size: '42px',
+    weight: 200
+  },
 }

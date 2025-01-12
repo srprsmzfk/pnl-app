@@ -172,6 +172,11 @@ export class MexcReferralCardComponent implements OnInit, AfterViewInit, OnDestr
 
   private drawForm(): void {
     let form = this.form.value;
+    if (this.lang === CardLanguage.Ru) {
+      this.canvasService.drawText('Цена входа', this.config[this.key.FairPriceTitle]);
+      this.canvasService.drawText('Справедл. цена', this.config[this.key.EntryPriceTitle]);
+      this.canvasService.drawText('Время', this.config[this.key.TimeTitle]);
+    }
     this.canvasService.drawText(`${form[this.key.Coin].toUpperCase()} USDT ${this.lang === CardLanguage.En ? 'Perpetual' : 'Бессрочный'}`, this.config[this.key.Coin]);
     this.canvasService.drawSellLine(this.getSellValue(), form[this.key.Factor], this.config);
     this.canvasService
