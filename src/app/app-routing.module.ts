@@ -12,7 +12,8 @@ import { OpenTradesTpslComponent } from './components/open-trades-tpsl/open-trad
 import { MexcOpenTradesComponent } from './components/mexc-open-trades/mexc-open-trades.component';
 import { MexcReferralCardComponent } from './components/mexc-referral-card/mexc-referral-card.component';
 import { MexcPnlCardComponent } from './components/mexc-pnl-card/mexc-pnl-card.component';
-import {FuturesAnalysisComponent} from "./components/futures-analysis/futures-analysis.component";
+import { FuturesAnalysisComponent } from "./components/futures-analysis/futures-analysis.component";
+import { MexcReferralCard2Component } from "./components/mexc-referral-card2/mexc-referral-card2.component";
 
 const routes: Routes = [
   {
@@ -66,7 +67,11 @@ const routes: Routes = [
   {
     path: 'card12',
     component: FuturesAnalysisComponent
-  }
+  },
+  {
+    path: 'card13',
+    component: MexcReferralCard2Component
+  },
 ];
 
 @NgModule({
