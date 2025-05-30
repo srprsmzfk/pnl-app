@@ -39,6 +39,16 @@ $my-app-theme: mat.define-light-theme(
   src: url('assets/fonts/Aktiv.woff2') format('woff2');
 }
 
+@font-face {
+  font-family: 'RobotoM' ;
+  src: url('assets/fonts/RobotoM.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'RobotoR' ;
+  src: url('assets/fonts/RobotoR.woff2') format('woff2');
+}
+
 html,
 body {
   height: 100%;

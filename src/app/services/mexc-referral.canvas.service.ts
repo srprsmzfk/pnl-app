@@ -1,9 +1,11 @@
-import { Injectable } from '@angular/core';
-import { CanvasService } from './canvas.service';
-import { TextInterface } from '../interfaces/text.interface';
-import { ColorEnum } from '../enums/color.enum';
-import { SellEnum } from '../enums/sell.enum';
-import { Card9KeyEnum } from '../enums/card9-key.enum';
+import {Injectable} from '@angular/core';
+import {CanvasService} from './canvas.service';
+import {TextInterface} from '../interfaces/text.interface';
+import {ColorEnum} from '../enums/color.enum';
+import {SellEnum} from '../enums/sell.enum';
+import {Card9KeyEnum} from '../enums/card9-key.enum';
+import {CardLanguage} from "../enums/card-language.enum";
+import {Card11KeyEnum} from "../enums/card11-key.enum";
 
 const sellConfig = {
   [SellEnum.Short]: ColorEnum.Red,
@@ -23,6 +25,52 @@ export class MexcReferralCanvasService extends CanvasService {
       y: config[Card9KeyEnum.Sell].y
     };
     caret.x += this.measureText(sell);
-    this.drawText(`/${factor}X`, {...config[Card9KeyEnum.Factor], x: caret.x});
+    this.drawText(`/${factor}X`, {...config[Card9KeyEnum.Sell], x: caret.x});
   }
+
+  drawBoxedText(text: any, config: TextInterface, color: any, x: number, y: number): number {
+    let boxColor = color;
+    if (config.font) {
+      this.context.font = `${config.weight} ${config.size} ${config.font}`;
+    }
+    const boxWidth = this.measureText(text) + 30;
+    this.drawRoundedRect(this.context, x, y, boxWidth, 36, 0, boxColor);
+    this.drawText(text, {...config, x: x + 15})
+    return boxWidth;
+  }
+
+  drawRoundedRect(ctx, x, y, width, height, radius, color) {
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.moveTo(x + radius, y);
+    ctx.arcTo(x + width, y, x + width, y + height, radius);
+    ctx.arcTo(x + width, y + height, x, y + height, radius);
+    ctx.arcTo(x, y + height, x, y, radius);
+    ctx.arcTo(x, y, x + width, y, radius);
+    ctx.closePath();
+    ctx.fill();
+  }
+  drawFeeLine(
+    fee: string,
+    lang: CardLanguage,
+    config: Record<string, TextInterface>,
+  ) {
+    let caret = this.drawBoxedText(
+      `0 ${lang == CardLanguage.En ? 'Fee' : 'Комиссия'}`,
+      config[Card11KeyEnum.Fee],
+      "#104fcc",
+      70,
+      340
+      );
+    this.drawBoxedText(
+      `${lang == CardLanguage.En ? 'Saved' : 'Сэкономлено'} ${fee}`,
+      config[Card11KeyEnum.Fee],
+      "#222429",
+      70 + caret,
+      340
+    );
+
+  }
+
+
 }

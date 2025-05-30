@@ -13,54 +13,30 @@ import { Card11KeyEnum } from "../../enums/card11-key.enum";
 const ruBgs = [
   {
     label: '0',
-    value: BackgroundEnum.MexCard3Ru1,
+    value: BackgroundEnum.NewMexCard3Ru1,
   },
   {
     label: '1',
-    value: BackgroundEnum.MexCard3Ru2,
+    value: BackgroundEnum.NewMexCard3Ru2,
   },
   {
     label: '2',
-    value: BackgroundEnum.MexCard3Ru3,
-  },
-  {
-    label: '3',
-    value: BackgroundEnum.MexCard3Ru4,
-  },
-  {
-    label: '4',
-    value: BackgroundEnum.MexCard3Ru5,
-  },
-  {
-    label: '5',
-    value: BackgroundEnum.MexCard3Ru6,
+    value: BackgroundEnum.NewMexCard3Ru3,
   },
 ];
 
 const enBgs = [
   {
     label: '0',
-    value: BackgroundEnum.MexCard3En1,
+    value: BackgroundEnum.NewMexCard3En1,
   },
   {
     label: '1',
-    value: BackgroundEnum.MexCard3En2,
+    value: BackgroundEnum.NewMexCard3En2,
   },
   {
     label: '2',
-    value: BackgroundEnum.MexCard3En3,
-  },
-  {
-    label: '3',
-    value: BackgroundEnum.MexCard3En4,
-  },
-  {
-    label: '4',
-    value: BackgroundEnum.MexCard3En5,
-  },
-  {
-    label: '5',
-    value: BackgroundEnum.MexCard3En6,
+    value: BackgroundEnum.NewMexCard3En3,
   },
 ];
 
@@ -78,17 +54,17 @@ export class MexcReferralCard2Component implements OnInit, AfterViewInit, OnDest
     [Card11KeyEnum.Sell]: new FormControl(SellEnum.ShortEn),
     [Card11KeyEnum.Factor]: new FormControl(''),
     [Card11KeyEnum.Coin]: new FormControl(''),
+    [Card11KeyEnum.Fee]: new FormControl(''),
     [Card11KeyEnum.Referral]: new FormControl(''),
     [Card11KeyEnum.Pnl]: new FormControl(''),
     [Card11KeyEnum.Pnl2]: new FormControl(''),
     [Card11KeyEnum.AvgEntryPrice]: new FormControl(''),
     [Card11KeyEnum.AvgClosePrice]: new FormControl(''),
-    [Card11KeyEnum.OpenTime]: new FormControl(''),
-    [Card11KeyEnum.CloseTime]: new FormControl(''),
+    [Card11KeyEnum.Time]: new FormControl(''),
     [Card11KeyEnum.Lang]: new FormControl(CardLanguage.En),
   })
 
-  imgSrc: any = BackgroundEnum.MexCard3En4;
+  imgSrc: any = BackgroundEnum.NewMexCard3En1;
   key = Card11KeyEnum;
   referals = MEXC_CLIENTS;
   sell = SellEnum;
@@ -163,7 +139,7 @@ export class MexcReferralCard2Component implements OnInit, AfterViewInit, OnDest
 
   private setQr(): void {
     this.canvasService
-      .drawImage(this.qrImg, this.config[this.key.Qr].x, this.config[this.key.Qr].y, 163, 163);
+      .drawImage(this.qrImg, this.config[this.key.Qr].x, this.config[this.key.Qr].y, 144, 144);
     this.setImg();
   }
 
@@ -174,26 +150,24 @@ export class MexcReferralCard2Component implements OnInit, AfterViewInit, OnDest
   private drawForm(): void {
     let form = this.form.value;
     if (this.lang === CardLanguage.Ru) {
-      this.canvasService.drawText('Ср. цена входа', this.config[this.key.AvgEntryPriceTitile]);
-      this.canvasService.drawText('Ср. цена закрытия', this.config[this.key.AvgClosePriceTitile]);
-      this.canvasService.drawText('Время открытия', this.config[this.key.OpenTimeTitile]);
-      this.canvasService.drawText('Время закрытия', this.config[this.key.CloseTimeTitile]);
+      this.canvasService.drawText('Цена входа', this.config[this.key.AvgEntryPriceTitile]);
+      this.canvasService.drawText('Справедл. цена', this.config[this.key.AvgClosePriceTitile]);
+      this.canvasService.drawText('Время', this.config[this.key.TimeTitile]);
     } else {
-      this.canvasService.drawText('Avg Entry price', this.config[this.key.AvgEntryPriceTitile]);
-      this.canvasService.drawText('Avg Close price', this.config[this.key.AvgClosePriceTitile]);
-      this.canvasService.drawText('Open Time', this.config[this.key.OpenTimeTitile]);
-      this.canvasService.drawText('Close Time', this.config[this.key.CloseTimeTitile]);
+      this.canvasService.drawText('Entry Price', this.config[this.key.AvgEntryPriceTitile]);
+      this.canvasService.drawText('Fair Price', this.config[this.key.AvgClosePriceTitile]);
+      this.canvasService.drawText('Date', this.config[this.key.TimeTitile]);
     }
     this.canvasService.drawText(`${form[this.key.Coin].toUpperCase()}USDT ${this.lang === CardLanguage.En ? 'Perpetual' : 'Бессрочный'}`, this.config[this.key.Coin]);
+    this.canvasService.drawFeeLine(`${form[this.key.Fee]} USDT`, this.lang, this.config);
     this.canvasService.drawSellLine(this.getSellValue(), form[this.key.Factor], this.config);
     this.canvasService
       .drawNumber(`${form[this.key.Pnl]}%`, this.config[this.key.Pnl]);
     this.canvasService
-      .drawNumber(`${form[this.key.Pnl2]}`, this.config[this.key.Pnl2]);
-    this.canvasService.drawText(form[this.key.AvgEntryPrice], this.config[this.key.AvgEntryPrice]);
-    this.canvasService.drawText(form[this.key.AvgClosePrice], this.config[this.key.AvgClosePrice]);
-    this.canvasService.drawText(form[this.key.OpenTime], this.config[this.key.OpenTime]);
-    this.canvasService.drawText(form[this.key.CloseTime], this.config[this.key.CloseTime]);
+      .drawNumber(`${form[this.key.Pnl2] ? form[this.key.Pnl2] + ' USDT' : ''}`, this.config[this.key.Pnl2]);
+    this.canvasService.drawText(`$${form[this.key.AvgEntryPrice]}`, this.config[this.key.AvgEntryPrice]);
+    this.canvasService.drawText(`$${form[this.key.AvgClosePrice]}`, this.config[this.key.AvgClosePrice]);
+    this.canvasService.drawText(form[this.key.Time], this.config[this.key.Time]);
     this.canvasService.drawText(form[this.key.Referral], this.config[this.key.Referral]);
     this.qr$.next(form[this.key.Referral]);
   }

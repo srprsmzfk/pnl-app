@@ -6,16 +6,32 @@ import { Card11KeyEnum } from "../enums/card11-key.enum";
 export const CARD11_CONFIG_EN: Record<string, TextInterface> = {
   [Card11KeyEnum.Sell]: {
     x: 70,
-    y: 350,
-    font: FontEnum.Plex,
+    y: 431,
+    font: FontEnum.RobotoR,
     color: ColorEnum.White,
     size: '40px',
-    weight: 900
+    weight: 700
   },
   [Card11KeyEnum.Coin]: {
     x: 70,
-    y: 300,
-    font: FontEnum.Plex,
+    y: 312,
+    font: FontEnum.RobotoR,
+    size: '40px',
+    color: ColorEnum.White,
+    weight: 700
+  },
+  [Card11KeyEnum.Fee]: {
+    x: 70,
+    y: 368,
+    font: FontEnum.RobotoR,
+    size: '28px',
+    color: ColorEnum.White,
+    weight: 500
+  },
+  [Card11KeyEnum.FeeBox]: {
+    x: 70,
+    y: 340,
+    font: FontEnum.RobotoM,
     size: '40px',
     color: ColorEnum.White,
     weight: 900
@@ -23,100 +39,84 @@ export const CARD11_CONFIG_EN: Record<string, TextInterface> = {
   [Card11KeyEnum.Factor]: {
     x: 70,
     y: 350,
-    font: FontEnum.Plex,
+    font: FontEnum.RobotoM,
     size: '40px',
     color: ColorEnum.White,
     weight: 900
   },
   [Card11KeyEnum.Pnl]: {
     x: 70,
-    y: 450,
-    font: FontEnum.Plex,
-    size: '80px',
+    y: 548,
+    font: FontEnum.RobotoM,
+    size: '85px',
     color: ColorEnum.Green,
-    weight: 900
+    weight: 700
   },
   [Card11KeyEnum.Pnl2]: {
     x: 70,
-    y: 520,
-    font: FontEnum.Plex,
+    y: 610,
+    font: FontEnum.RobotoM,
     size: '45px',
     color: ColorEnum.Green,
     weight: 900
   },
   [Card11KeyEnum.AvgEntryPrice]: {
-    x: 350,
-    y: 863,
-    font: FontEnum.Plex,
+    x: 290,
+    y: 947,
+    font: FontEnum.RobotoR,
     size: '35px',
     color: ColorEnum.White,
     weight: 900
   },
   [Card11KeyEnum.AvgClosePrice]: {
-    x: 350,
-    y: 912,
-    font: FontEnum.Plex,
+    x: 290,
+    y: 1006,
+    font: FontEnum.RobotoR,
     color: ColorEnum.White,
     size: '35px',
     weight: 900
   },
-  [Card11KeyEnum.OpenTime]: {
-    x: 350,
-    y: 961,
-    font: FontEnum.Plex,
+  [Card11KeyEnum.Time]: {
+    x: 290,
+    y: 1060,
+    font: FontEnum.RobotoR,
     color: ColorEnum.White,
     size: '35px',
     weight: 100
   },
-  [Card11KeyEnum.CloseTime]: {
-    x: 350,
-    y: 1010,
-    font: FontEnum.Plex,
-    color: ColorEnum.White,
-    size: '35px',
-    weight: 500
-  },
   [Card11KeyEnum.Referral]: {
-    x: 554,
-    y: 1165,
-    font: FontEnum.Plex,
+    x: 487,
+    y: 1195,
+    font: FontEnum.RobotoM,
     size: '45px',
     color: ColorEnum.White,
-    weight: 900
+    weight: 500
   },
   [Card11KeyEnum.Qr]: {
-    x: 45,
-    y: 1101,
+    x: 40,
+    y: 1279-145,
   },
   [Card11KeyEnum.AvgEntryPriceTitile]: {
     x: 70,
-    y: 863,
-    font: FontEnum.Plex,
-    color: '#d4d7dd',
+    y: 947,
+    font: FontEnum.RobotoR,
+    color: ColorEnum.White,
     size: '35px',
     weight: 500
   },
   [Card11KeyEnum.AvgClosePriceTitile]: {
     x: 70,
-    y: 912,
-    font: FontEnum.Plex,
-    color: '#d4d7dd',
+    y: 1006,
+    font: FontEnum.RobotoR,
+    color: ColorEnum.White,
     size: '35px',
     weight: 500
   },
-  [Card11KeyEnum.OpenTimeTitile]: {
+  [Card11KeyEnum.TimeTitile]: {
     x: 70,
-    y: 961,
-    font: FontEnum.Plex,
-    color: '#d4d7dd',
-    size: '35px',
-    weight: 500
-  },
-  [Card11KeyEnum.CloseTimeTitile]: {
-    x: 70,
-    y: 1010,
-    font: FontEnum.Plex,
-    color: '#d4d7dd',
+    y: 1060,
+    font: FontEnum.RobotoR,
+    color: ColorEnum.White,
     size: '35px',
     weight: 500
   },

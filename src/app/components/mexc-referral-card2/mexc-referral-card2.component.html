@@ -27,6 +27,11 @@
       </mat-form-field>
 
       <mat-form-field appearance="fill">
+        <mat-label>Fee</mat-label>
+        <input matInput [formControlName]="key.Fee">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
         <mat-label>Factor</mat-label>
         <input matInput [formControlName]="key.Factor">
       </mat-form-field>
@@ -53,12 +58,7 @@
 
       <mat-form-field appearance="fill">
         <mat-label>Time</mat-label>
-        <input matInput [formControlName]="key.OpenTime">
-      </mat-form-field>
-
-      <mat-form-field appearance="fill">
-        <mat-label>Time</mat-label>
-        <input matInput [formControlName]="key.CloseTime">
+        <input matInput [formControlName]="key.Time">
       </mat-form-field>
 
       <mat-form-field appearance="fill">
