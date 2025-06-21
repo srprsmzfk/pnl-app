@@ -60,4 +60,8 @@ export enum BackgroundEnum {
   NewMexCard3En1 = 'assets/img/new-mexc3-background1-en.png',
   NewMexCard3En2 = 'assets/img/new-mexc3-background2-en.png',
   NewMexCard3En3 = 'assets/img/new-mexc3-background3-en.png',
+
+  NewMexCard2Ru1 = 'assets/img/new-mexc2-background1-ru.png',
+  NewMexCard2Ru2 = 'assets/img/new-mexc2-background2-ru.png',
+  NewMexCard2Ru3 = 'assets/img/new-mexc2-background3-ru.png',
 }

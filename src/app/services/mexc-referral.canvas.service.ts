@@ -6,6 +6,7 @@ import {SellEnum} from '../enums/sell.enum';
 import {Card9KeyEnum} from '../enums/card9-key.enum';
 import {CardLanguage} from "../enums/card-language.enum";
 import {Card11KeyEnum} from "../enums/card11-key.enum";
+import {Card12KeyEnum} from "../enums/card12-key.enum";
 
 const sellConfig = {
   [SellEnum.Short]: ColorEnum.Red,
@@ -39,6 +40,20 @@ export class MexcReferralCanvasService extends CanvasService {
     return boxWidth;
   }
 
+  drawSellFactorLine(sell: SellEnum, factor: string, config: Record<string, TextInterface> ): void {
+    let caret = {
+      x: config[Card12KeyEnum.Sell].x,
+      y: config[Card12KeyEnum.Sell].y
+    }
+    let space = 30;
+
+    this.drawText(sell, {...config[Card12KeyEnum.Sell], color: sell === SellEnum.Short ? ColorEnum.Red : ColorEnum.Green});
+    caret.x += this.measureText(sell) + space;
+    this.drawRect(caret.x, caret.y - 35, 2, 40, ColorEnum.LightGrey);
+    caret.x += space + 2;
+    this.drawText(factor, {...config[Card12KeyEnum.Factor], x: caret.x});
+  }
+
   drawRoundedRect(ctx, x, y, width, height, radius, color) {
     ctx.fillStyle = color;
     ctx.beginPath();
@@ -69,8 +84,5 @@ export class MexcReferralCanvasService extends CanvasService {
       70 + caret,
       340
     );
-
   }
-
-
 }

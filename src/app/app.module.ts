@@ -27,6 +27,7 @@ import { MexcReferralCardComponent } from './components/mexc-referral-card/mexc-
 import { MexcPnlCardComponent } from './components/mexc-pnl-card/mexc-pnl-card.component';
 import { FuturesAnalysisComponent } from './components/futures-analysis/futures-analysis.component';
 import { MexcReferralCard2Component } from "./components/mexc-referral-card2/mexc-referral-card2.component";
+import { MexcReferralCard3Component } from './components/mexc-referral-card3/mexc-referral-card3.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { MexcReferralCard2Component } from "./components/mexc-referral-card2/mex
     MexcReferralCardComponent,
     MexcPnlCardComponent,
     FuturesAnalysisComponent,
-    MexcReferralCard2Component
+    MexcReferralCard2Component,
+    MexcReferralCard3Component
   ],
     imports: [
         BrowserModule,

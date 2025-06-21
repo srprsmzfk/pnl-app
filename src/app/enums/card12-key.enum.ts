@@ -1,0 +1,16 @@
+export enum Card12KeyEnum {
+  Lang = 'lang',
+  Sell = 'sell',
+  Coin = 'coin',
+  Factor = 'factor',
+  Pnl = 'pnl',
+  Pnl2 = 'pnl2',
+  Background = 'background',
+  EntryPrice = 'fair-price',
+  ClosePrice = 'entry-price',
+  Time = 'time',
+  Referral = 'referral',
+  Qr = 'qr',
+  EntryPriceTitile = 'fair-pricet',
+  ClosePriceTitile = 'entry-pricet',
+}

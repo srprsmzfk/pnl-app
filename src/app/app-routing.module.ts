@@ -14,6 +14,7 @@ import { MexcReferralCardComponent } from './components/mexc-referral-card/mexc-
 import { MexcPnlCardComponent } from './components/mexc-pnl-card/mexc-pnl-card.component';
 import { FuturesAnalysisComponent } from "./components/futures-analysis/futures-analysis.component";
 import { MexcReferralCard2Component } from "./components/mexc-referral-card2/mexc-referral-card2.component";
+import { MexcReferralCard3Component } from "./components/mexc-referral-card3/mexc-referral-card3.component";
 
 const routes: Routes = [
   {
@@ -71,6 +72,10 @@ const routes: Routes = [
   {
     path: 'card13',
     component: MexcReferralCard2Component
+  },
+  {
+    path: 'card14',
+    component: MexcReferralCard3Component
   },
 ];
 
