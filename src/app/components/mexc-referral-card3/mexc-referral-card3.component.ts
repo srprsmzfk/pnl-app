@@ -22,6 +22,14 @@ const ruBgs = [
     label: '2',
     value: BackgroundEnum.NewMexCard2Ru3,
   },
+  {
+    label: '3',
+    value: BackgroundEnum.NewMexCard2Ru4,
+  },
+  {
+    label: '4',
+    value: BackgroundEnum.NewMexCard2Ru5,
+  },
 ];
 
 // const enBgs = [
