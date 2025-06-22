@@ -32,22 +32,6 @@ const ruBgs = [
   },
 ];
 
-// const enBgs = [
-//   {
-//     label: '0',
-//     value: BackgroundEnum.NewMexCard3En1,
-//   },
-//   {
-//     label: '1',
-//     value: BackgroundEnum.NewMexCard3En2,
-//   },
-//   {
-//     label: '2',
-//     value: BackgroundEnum.NewMexCard3En3,
-//   },
-// ];
-
-
 @Component({
   selector: 'app-mexc-referral-card3',
   templateUrl: './mexc-referral-card3.component.html',
